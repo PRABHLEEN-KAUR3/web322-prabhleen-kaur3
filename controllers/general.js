@@ -48,10 +48,8 @@ router.post("/Login", (req, res) => {
 
   let passedValidation = true;
   let validationMessages = {};
-  //Regular expression for email from: https://www.simplilearn.com/tutorials/javascript-tutorial/email-validation-in-javascript
-  var form = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-  if(!email.match(form) || email.trim().length === 0){
+  if(email.trim().length === 0){
     passedValidation = false;
     validationMessages.email = "*** Required Field *** Please fill in your email address."
   }
