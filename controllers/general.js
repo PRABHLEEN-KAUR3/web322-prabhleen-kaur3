@@ -58,7 +58,7 @@ router.post("/Login", (req, res) => {
       validationMessages.password = "*** Required Field *** Please fill in your Password."
   }
   
-  if(passedValidation){
+  if(passedValidation === true){
       res.send("Success");
   }
   else{ 
