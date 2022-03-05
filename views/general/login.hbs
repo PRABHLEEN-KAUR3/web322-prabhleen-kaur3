@@ -1,0 +1,39 @@
+ {{!-- /************************************************************************************
+* WEB322 â€“ Project (Winter 2022)
+* I declare that this assignment is my own work in accordance with Seneca Academic
+* Policy. No part of this assignment has been copied manually or electronically from
+* any other source (including web sites) or distributed to other students.
+*
+* Name: Prabhleen Kaur
+* Student ID: 146094206
+* Course/Section: WEB322/NDD
+*
+************************************************************************************/ --}}
+
+{{>header}}
+<section class="login">
+    <div class="form">
+    <form method="post" action="/Login">
+        <h1>Already a Member?</h1>
+
+        <div class = "input">
+        <label for = "email"><b>Email</b></label>
+        <input type="text" id = "email" placeholder="Email" name="email" value="{{values.email}}">
+        </div>
+        {{#if validationMessages.email}}
+        <span style="color:red; font-weight: bolder; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-style:oblique;">{{validationMessages.email}}<br><br></span>
+        {{/if}}
+        <div class = "input">
+        <label for ="password"><b>Password</b></label>
+        <input type="password" id="password" placeholder="Password"  name="password" value="{{values.password}}" >
+        </div>
+         {{#if validationMessages.password}}
+        <span style="color:red; font-weight: bolder; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-style:oblique;">{{validationMessages.password}}<br><br></span>
+        {{/if}}
+        <input type="submit" class = "btn" value = "LOG IN"/><br/>
+    </form>
+    </div>
+
+</section>
+
+{{>footer}}

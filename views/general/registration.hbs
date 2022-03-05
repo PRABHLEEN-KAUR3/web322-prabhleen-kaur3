@@ -1,0 +1,54 @@
+ {{!-- /************************************************************************************
+* WEB322 â€“ Project (Winter 2022)
+* I declare that this assignment is my own work in accordance with Seneca Academic
+* Policy. No part of this assignment has been copied manually or electronically from
+* any other source (including web sites) or distributed to other students.
+*
+* Name: Prabhleen Kaur
+* Student ID: 146094206
+* Course/Section: WEB322/NDD
+*
+************************************************************************************/ --}}
+
+{{>header}}
+<section class="login">
+    <div class="form">
+    <form method = "post" action = "/Registration">
+        <h1>Sign Up</h1>
+        <h2>Are you a new member? Create your account by entering your details below</h2>
+        <div class = "input">
+        <label for = "firstName"><b>First Name</b></label>
+        <input type="text" id = "firstName" placeholder="First Name"  name="firstName" value="{{values.firstName}}">
+        </div>
+        {{#if validationMessages.firstName}}
+        <span style="color:red; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-style:oblique;">{{validationMessages.firstName}}<br></span>
+        {{/if}}
+        <div class = "input">
+        <label for = "lastName"><b>Last Name</b></label>
+        <input type="text" id = "lastName" placeholder="Last Name" name="lastName" value="{{values.lastName}}">
+        </div>
+        {{#if validationMessages.lastName}}
+        <span style="color:red; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-style:oblique;">{{validationMessages.lastName}}<br></span>
+        {{/if}}
+        <div class = "input">
+        <label for = "email"><b>Email</b></label>
+        <input type="text" placeholder="Email" id = "email" name="email" value="{{values.email}}">
+        </div>
+        {{#if validationMessages.email}}
+        <span style="color:red; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-style:oblique;">{{validationMessages.email}}<br></span>
+        {{/if}}
+        <div class = "input">
+        <label for = "password"><b>Password</b></label>
+        <input type="password" placeholder="Password" id = "password" name="password" value="{{values.password}}">
+        </div>
+         {{#if validationMessages.password}}
+        <span style="color:red; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-style:oblique;">{{validationMessages.password}}<br><br></span>
+        {{/if}}
+
+        <input type="submit" class = "btn" value = "SIGN UP"/>
+    </form>
+    </div>
+
+</section>
+
+{{>footer}}
