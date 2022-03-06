@@ -38,9 +38,10 @@ router.get("/Login", (req,res) => {
   res.render("general/login");
 });
 
-router.get("/Welcome", (req,res) => {
+router.get("/welcome", (req,res) => {
   res.render("welcome");
-})
+});
+
 router.post("/Login", (req, res) => {
 
   console.log(req.body);
