@@ -104,7 +104,7 @@ router.post("/Registration", (req,res) => {
     passedValidation = false;
     validationMessages.email = "*** Required Field *** Please fill in a valid email address."
   }
-  if(!password.match(pswd)){
+  if(!password.match(pswd) || password.trim().length === 0){
       passedValidation=false;
       validationMessages.password = "*** Fill in valid Password *** "
   }
