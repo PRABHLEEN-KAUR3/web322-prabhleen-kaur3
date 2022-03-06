@@ -117,8 +117,8 @@ router.post("/Registration", (req,res) => {
         to: `${email}`,
         from: "prabhleen-kaur3@myseneca.ca",
         subject: "Registration Form Submission",
-        html: ` Hello ${lastName}, <br><br>  <b>---- Welcome to GrabHub ----<b><br>
-            Full Name: ${firstName} ${lastName}<br>
+        html: ` Hello ${lastName}, <br><br>  <b>---- Welcome to GrabHub ----</b><br>
+            Full Name: <i>${firstName} ${lastName}</i><br>
             Email Address: ${email}<br><br>
             Thank you for visiting our site<br>
             Prabhleen Kaur<br>
