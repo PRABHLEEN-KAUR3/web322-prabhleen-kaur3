@@ -50,14 +50,20 @@ router.post("/Login", (req, res) => {
   let passedValidation = true;
   let validationMessages = {};
 
-  if(email.trim().length === 0){
+  //Regular expression for email from: https://www.simplilearn.com/tutorials/javascript-tutorial/email-validation-in-javascript
+  var form = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  //Regular expression for password from: https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
+  var pswd=/^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,12}$/;  
+
+  if(!email.match(form) || email.trim().length === 0){
     passedValidation = false;
-    validationMessages.email = "*** Required Field *** Please fill in your email address."
+    validationMessages.email = "*** Required Field *** Please fill in a valid email address."
   }
-  if(password.trim().length === 0){
+  if(!password.match(pswd) || password.trim().length === 0){
       passedValidation=false;
-      validationMessages.password = "*** Required Field *** Please fill in your Password."
+      validationMessages.password = "*** Fill in valid Password *** "
   }
+  
   
   if(passedValidation === true){
       res.send("Success");
@@ -83,7 +89,7 @@ router.post("/Registration", (req,res) => {
   //Regular expression for email from: https://www.simplilearn.com/tutorials/javascript-tutorial/email-validation-in-javascript
   var form = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   //Regular expression for password from: https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
-  var pswd=/^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/;
+  var pswd=/^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,12}$/;
 
   if(typeof firstName !== 'string' || firstName.trim().length === 0){
     passedValidation = false;
