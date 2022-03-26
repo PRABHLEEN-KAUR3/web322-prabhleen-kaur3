@@ -14,6 +14,8 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const path = require("path");
 const app = express();
+const mongoose = require("mongoose");
+const session = require("express-session");
 
 //Setup API Key
 const dotenv = require('dotenv');
@@ -31,8 +33,38 @@ app.set("view engine", ".hbs");
 // Set up body parser
 app.use(express.urlencoded({ extended: false }));
 
+//Setup express session
+app.use(session({
+    secret: process.env.SESSION_SECRET, //secret used to protect the cookies
+    resave: false,
+    saveUninitialized: true
+}));
+
+app.use((req, res, next) => {
+    res.locals.user = req.session.user;
+    req.session.isClerk;
+    next();
+});
+
+
+// Set up and connect to MongoDB -> reference taken from course notes
+mongoose.connect(process.env.MONGO_DB_CONN_STRING, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => {
+    console.log("Connected SUCCESSFULLY to the MongoDB database.");
+})
+.catch((err) => {
+    console.log(`*** Connection with ${err} NOT SUCCESSFUL ***`);
+});
+
 // Load the controllers into Express
+const userController = require("./controllers/user");
+app.use("/", userController);
+
 const generalController = require("./controllers/general");
+const { redirect } = require("express/lib/response");
 app.use("/", generalController);
 
 

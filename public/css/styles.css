@@ -455,3 +455,10 @@ p2>img{
     width: 50%;
     height: 100%;
 }
+
+.checkbox{
+    color:midnightblue;
+    font-size:medium;
+    font-weight: bold;
+    font-family:cursive;
+}
